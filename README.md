@@ -20,3 +20,6 @@ RRULE:FREQ=WEEKLY;COUNT=13
 END:VEVENT
 END:VCALENDAR
 ```
+## Requirement
+- Chrome
+- [ChromeDriver](https://chromedriver.chromium.org/)
