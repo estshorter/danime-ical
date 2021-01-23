@@ -174,9 +174,19 @@ func scrape(html io.Reader) (map[string]AnimeInfo, error) {
 		}
 		// fmt.Println(weekday)
 		s.Find("div.itemModule.list").Each(func(idx int, s2 *goquery.Selection) {
+			if errorOccurred {
+				return
+			}
+
 			startTime := s2.Find("div.workMainText").First().Text() // like 25:00
 			title := s2.Find("div.textContainerIn").First().Text()
-			hour, _ := strconv.Atoi(startTime[:2])
+			hour, err := strconv.Atoi(startTime[:2])
+			if err != nil {
+				errorOccurred = true
+				errLoop = err
+				return
+			}
+
 			weekdayTmp := weekday
 			if hour >= 24 {
 				weekdayTmp++
@@ -266,15 +276,14 @@ func main() {
 		// data, _ := ioutil.ReadAll(html)
 		// ioutil.WriteFile("cache.html", data, os.ModePerm)
 	} else {
-		var data []byte
-		data, err = ioutil.ReadFile("cache.html")
-		html = bytes.NewReader([]byte(data))
+		html, err = loadHTMLFromFile("cache.html")
 	}
 	if err != nil {
 		log.Fatalln(err)
 	}
 	animes, err := scrape(html)
 	if err != nil {
+		log.Println("Failed to scraping the page")
 		log.Fatalln(err)
 	}
 	if debug {
@@ -282,6 +291,7 @@ func main() {
 	}
 	ical, err := generateICAL(animes, configs.Titles)
 	if err != nil {
+		log.Println("Failed to generating a ical file")
 		log.Fatalln(err)
 	}
 	fmt.Println(ical)
