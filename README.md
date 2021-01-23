@@ -1,6 +1,6 @@
 # danime-ical
 
-[dアニメストア](https://anime.dmkt-sp.jp)の[今季アニメ一覧ページ](https://anime.dmkt-sp.jp/animestore/CF/winter)の情報をもとに、指定したアニメの配信情報を表すiCalデータを作るプログラム。Googleカレンダーに読み込ませて使うことを想定している。アニメ一覧ページのURLおよび、アニメタイトルの指定は`configs.json`で行う。`config.json`の場所は下記のようにコマンドライン引数で与える。指定しない場合には、カレントディレクトリのものが読み込まれる。
+[dアニメストア](https://anime.dmkt-sp.jp)の[今季アニメ一覧ページ](https://anime.dmkt-sp.jp/animestore/CF/winter)の情報をもとに、指定したアニメの配信情報を表すiCalデータを作るプログラム。[Googleカレンダーに読み込ませて](https://support.google.com/calendar/answer/37118)使うことを想定している。アニメ一覧ページのURLおよび、アニメタイトルの指定は`configs.json`で行う。`config.json`の場所は下記のようにコマンドライン引数で与える。指定しない場合には、カレントディレクトリのものが読み込まれる。
 
 `danime-ical.exe PATH_TO_CONFIGS_JSON`
 
