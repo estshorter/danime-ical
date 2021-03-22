@@ -23,3 +23,9 @@ END:VCALENDAR
 ## Requirement
 - Chrome
 - [ChromeDriver](https://chromedriver.chromium.org/)
+
+## References
+- [春アニメ 新作](https://anime.dmkt-sp.jp/animestore/CF/spring)
+- [夏アニメ 新作](https://anime.dmkt-sp.jp/animestore/CF/summer)
+- [秋アニメ 新作](https://anime.dmkt-sp.jp/animestore/CF/fall)
+- [冬アニメ 新作](https://anime.dmkt-sp.jp/animestore/CF/winter)
