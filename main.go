@@ -114,7 +114,7 @@ func parseSeason(s string) (time.Month, error) {
 	case "秋":
 		return time.October, nil
 	default:
-		return 0, fmt.Errorf("Invalid input to stringToCour(): %s", s)
+		return 0, fmt.Errorf("invalid input to stringToCour(): %s", s)
 	}
 }
 
@@ -135,7 +135,7 @@ func parseWeekday(s string) (time.Weekday, error) {
 	case "土":
 		return time.Saturday, nil
 	default:
-		return 0, fmt.Errorf("Invalid input to weekStringToInt(): %s", s)
+		return 0, fmt.Errorf("invalid input to weekStringToInt(): %s", s)
 	}
 }
 
