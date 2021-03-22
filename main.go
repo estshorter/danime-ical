@@ -179,7 +179,9 @@ func scrape(html io.Reader) (map[string]AnimeInfo, error) {
 			}
 
 			startTime := s2.Find("div.workMainText").First().Text() // like 25:00
-			title := s2.Find("div.textContainerIn").First().Text()
+			// 放送前だと「4月13日 24:00～ <br> TITLE」 のようになっているので一番最後のcontentをtitleとみなす
+			// アニメタイトルに改行は入っていないと想定
+			title := s2.Find("div.textContainerIn span").Contents().Last().Text()
 			hour, err := strconv.Atoi(startTime[:2])
 			if err != nil {
 				errorOccurred = true
