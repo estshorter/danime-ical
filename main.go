@@ -310,6 +310,9 @@ func main() {
 	if debug {
 		fmt.Println(animes)
 	}
+	if len(animes) == 0 {
+		log.Fatalln("anime info does not exists. please check url or try again.")
+	}
 	ical, err := generateICAL(animes, configs.Titles)
 	if err != nil {
 		log.Println("Failed to generating a ical file")
