@@ -4,8 +4,8 @@
         "まちカドまぞく 2丁目",
         "SPY×FAMILY"
     ],
-    "url_winter": "https://anime.dmkt-sp.jp/animestore/CF/winter",
-    "url_spring": "https://anime.dmkt-sp.jp/animestore/CF/spring",
-    "url_summer": "https://anime.dmkt-sp.jp/animestore/CF/summer",
-    "url_fall": "https://anime.dmkt-sp.jp/animestore/CF/fall"
+    "url_winter": "https://animestore.docomo.ne.jp/animestore/CF/winter",
+    "url_spring": "https://animestore.docomo.ne.jp/animestore/CF/spring",
+    "url_summer": "https://animestore.docomo.ne.jp/animestore/CF/summer",
+    "url_fall": "https://animestore.docomo.ne.jp/animestore/CF/fall"
 }
