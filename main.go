@@ -311,7 +311,7 @@ func main() {
 		fmt.Println(animes)
 	}
 	if len(animes) == 0 {
-		log.Fatalln("anime info does not exists. please check url or try again.")
+		log.Fatalln("Anime info does not exist. please check url or try this script again.")
 	}
 	ical, err := generateICAL(animes, configs.Titles)
 	if err != nil {
