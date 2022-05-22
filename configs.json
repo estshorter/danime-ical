@@ -1,6 +1,11 @@
 {
-    "url": "https://anime.dmkt-sp.jp/animestore/CF/summer",
+    "season": "spring",
     "titles": [
-        "ひぐらしのなく頃に卒"
-    ]
+        "まちカドまぞく 2丁目",
+        "SPY×FAMILY"
+    ],
+    "url_winter": "https://anime.dmkt-sp.jp/animestore/CF/winter",
+    "url_spring": "https://anime.dmkt-sp.jp/animestore/CF/spring",
+    "url_summer": "https://anime.dmkt-sp.jp/animestore/CF/summer",
+    "url_fall": "https://anime.dmkt-sp.jp/animestore/CF/fall"
 }

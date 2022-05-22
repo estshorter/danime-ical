@@ -10,6 +10,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
@@ -19,8 +20,12 @@ import (
 
 // Configs defines inputs to this app
 type Configs struct {
-	URL    string   `json:"url"`
-	Titles []string `json:"titles"`
+	Season    string   `json:"season"`
+	Titles    []string `json:"titles"`
+	URLWinter string   `json:"url_winter"`
+	URLSpring string   `json:"url_spring"`
+	URLSummer string   `json:"url_summer"`
+	URLFall   string   `json:"url_fall"`
 }
 
 // AnimeInfo defines information of an anime
@@ -229,7 +234,7 @@ func generateICAL(animes map[string]AnimeInfo, titles []string) (string, error) 
 	for _, title := range titles {
 		info, ok := animes[title]
 		if !ok {
-			return "", fmt.Errorf("%s not found in DB", title)
+			return "", fmt.Errorf("%s not found in the scraped data", title)
 		}
 		t := weekdayToTime[info.Week]
 		startDate := time.Date(t.Year(), t.Month(), t.Day(), info.Hour, info.Minute, 0, t.Nanosecond(), t.Location())
@@ -273,8 +278,22 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	var url string
 	if !debug {
-		html, err = downloadAnimeInfo(configs.URL)
+		switch strings.ToLower(configs.Season) {
+		case "winter":
+			url = configs.URLWinter
+		case "spring":
+			url = configs.URLSpring
+		case "summer":
+			url = configs.URLSummer
+		case "fall":
+			url = configs.URLFall
+		default:
+			log.Fatalf("invalid season specified: %s\n", configs.Season)
+		}
+		html, err = downloadAnimeInfo(url)
 		// data, _ := ioutil.ReadAll(html)
 		// ioutil.WriteFile("cache.html", data, os.ModePerm)
 	} else {
