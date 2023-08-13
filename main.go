@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
@@ -88,7 +87,7 @@ func downloadAnimeInfo(URL string) (io.Reader, error) {
 }
 
 func loadHTMLFromFile(cacheFilePath string) (io.Reader, error) {
-	content, err := ioutil.ReadFile(cacheFilePath)
+	content, err := os.ReadFile(cacheFilePath)
 	return bytes.NewReader(content), err
 }
 
@@ -250,7 +249,7 @@ func generateICAL(animes map[string]AnimeInfo, titles []string) (string, error) 
 }
 
 func readConfigs(path string) (*Configs, error) {
-	content, err := ioutil.ReadFile(path)
+	content, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
@@ -294,8 +293,6 @@ func main() {
 			log.Fatalf("invalid season specified: %s\n", configs.Season)
 		}
 		html, err = downloadAnimeInfo(url)
-		// data, _ := ioutil.ReadAll(html)
-		// ioutil.WriteFile("cache.html", data, os.ModePerm)
 	} else {
 		html, err = loadHTMLFromFile("cache.html")
 	}
@@ -319,5 +316,5 @@ func main() {
 		log.Fatalln(err)
 	}
 	fmt.Println(ical)
-	ioutil.WriteFile("anime.ics", []byte(ical), os.ModePerm)
+	os.WriteFile("anime.ics", []byte(ical), os.ModePerm)
 }
